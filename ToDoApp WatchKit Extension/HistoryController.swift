@@ -50,6 +50,9 @@ class HistoryController: WKInterfaceController {
 
     }
     
+    func deleteRows() {
+        self.table.removeRowsAtIndexes(NSIndexSet(indexesInRange: NSMakeRange(0, self.table.numberOfRows)))
+    }
     
 
     override func willActivate() {
@@ -65,7 +68,7 @@ class HistoryController: WKInterfaceController {
 
     
     private func createTableFromActivitiesList(activitiesList:[String]!) {
-        
+        deleteRows()
         // insert the rows first
         self.table.insertRowsAtIndexes(NSIndexSet(indexesInRange: NSMakeRange(0, activitiesList.count)), withRowType: "TaskCell")
         

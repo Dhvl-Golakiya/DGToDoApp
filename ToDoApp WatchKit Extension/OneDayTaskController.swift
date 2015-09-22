@@ -56,8 +56,11 @@ class OneDayTaskController: WKInterfaceController {
         }
     }
     
+    func deleteRows() {
+        self.table.removeRowsAtIndexes(NSIndexSet(indexesInRange: NSMakeRange(0, self.table.numberOfRows)))
+    }
     private func createTableFromTaskList() {
-        
+        deleteRows()
         // insert the rows first
         self.table.insertRowsAtIndexes(NSIndexSet(indexesInRange: NSMakeRange(0, taskList.count)), withRowType: "TaskCell")
         
